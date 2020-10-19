@@ -5,11 +5,9 @@ import matplotlib.pyplot as plt
 # Construct lines
 # x > 0
 x = np.linspace(0, 20, 2000)
-# x1 >= 0
+
 y1 = x/2+1
 
-plt.xlabel(r'$x_2>=0$')
-plt.ylabel(r'$x_1>=0$')
 # Make plot
 plt.plot(x, y1)
 
