@@ -19,7 +19,7 @@ def imprimirMonedas(monedasUsadas,vueltas):
 
 def main():
     cantidad = 63
-    listaM = [1,5,10,20,50]
+    listaM = [1,5,10,20,25]
     monedasUsadas = [0]*(cantidad+1)
     conteoMonedas = [0]*(cantidad+1)
 
