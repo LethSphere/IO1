@@ -3,40 +3,25 @@
 @author: Violeth V, Julian S, Esteban L
 """
 #ITERA  PARA EL MENOR VALOR DE X
-def iteracion(numero_iteraciones, valor_inial):
-    sol_iteracion = []
-
-    sol_iteracion.append(min_valor(valor_inial))
-
+def iter(numero_iteraciones, valor_inial):
     for i in range(numero_iteraciones - 1):
-        sol_iteracion.append(min_valor(sol_iteracion[i][0]))
-
-    sol_iteracion.reverse()
-
-    return sol_iteracion
+        iter.append(min_valor(sol_iteracion[i][0]))
 #CALCULA LA FUNCION RECURSIVA EVALUADA EN X
-def funcion_lote(x, funcion_recursiva):
+def fun(x, funcion_recursiva):
     if x == 0:
-        return x + funcion_recursiva * (0.5**x)
-
-    return 3 + x + funcion_recursiva * (0.5**x)
-
+        return x + fun_rec* (0.5**x)
+    return 3 + x + fun_rec* (0.5**x)
 #ENCUENTRA EL MENOR VALOR POSIBLE PARA LA ETAPA Y EN LA VARIABLE X
-def min_valor(funcion_recursiva):
+def min_valor(fun_rec):
     xn = []
-
     xn.append(funcion_lote(0, funcion_recursiva))
-
     #EVALUA POR CADA CONDICION
     while xn[len(xn) - 1] >= funcion_lote(len(xn), funcion_recursiva) or xn[len(xn) - 1] >= funcion_lote(len(xn) + 1, funcion_recursiva):
         xn.append(funcion_lote(len(xn), funcion_recursiva))
-
     return min(xn), xn.index(min(xn))
-if __name__ == "__main__":
     #MAIN
     numero_iteraciones = 7
     funcion_inial = 10
-    
     solucion = iteracion(numero_iteraciones, funcion_inial)
 
     for i in range(len(solucion)):
