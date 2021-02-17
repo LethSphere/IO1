@@ -3,37 +3,20 @@
 @author: Violeth V, Julian S, Esteban L
 """
 #ITERACIONES PARA Y Y X VALORES
-def iteracion(numero_iteraciones, valor_inial):
-
-    sol_iteracion = []
-
-    sol_iteracion.append(min_valor(valor_inial))
-
+def iter(numero_iteraciones, valor_inial):
     for i in range(numero_iteraciones - 1):
-        sol_iteracion.append(min_valor(sol_iteracion[i][0]))
-
-    sol_iteracion.reverse()
-
-    return sol_iteracion
+        iter.append(min_valor(sol_iteracion[i][0]))
 #CALCULO DE LA FUNCION RECURSIVA PARA Y ITERACIONES Y X VALORES
-def funcion_lote(x, funcion_recursiva):
+def fun(x, fun_rec):
     if x == 0:
         return x + funcion_recursiva * (0.5**x)
 
     return 3 + x + funcion_recursiva * (0.5**x)
 #EVALUACION DE LA FUNCION RECURSIVA
-def min_valor(funcion_recursiva):
-    xn = []
-
+def min_valor(fun_rec):
     xn.append(funcion_lote(0, funcion_recursiva))
-
-    # Se pone en dos condiciones para revisar el siguiente y el siguiente a este, pues se puede dar el caso...tal vez se podria optimizar
-    while xn[len(xn) - 1] >= funcion_lote(len(xn), funcion_recursiva) or xn[len(xn) - 1] >= funcion_lote(len(xn) + 1, funcion_recursiva):
-        xn.append(funcion_lote(len(xn), funcion_recursiva))
-
     return min(xn), xn.index(min(xn))
 
-if __name__ == "__main__":
     #MAIN
     numero_iteraciones = 3
     funcion_inial = 7
