@@ -1,0 +1,179 @@
+# -*- coding: utf-8 -*-
+"""
+@author: 
+Violeth Valmont Az,
+Esteban López Duarte
+Julian Sarmiento Linares
+"""
+
+from tkinter import *
+
+#CREACION VENTANA
+raiz=Tk()
+raiz.title("Tutelas")
+frame=Frame(raiz, width=500, height=800)
+frame.pack()
+frame.config(cursor="hand2")
+
+#######################################
+#PANTALLA
+texPantalla=StringVar()
+
+pantalla=Label(frame,textvariable=texPantalla)
+pantalla.grid(row=1,column=2,padx=10,pady=1,rowspan=13)
+
+#######################################
+#   Variables
+vdemandante=""
+vdemandado=""
+vjuez=""
+vnombre=""
+videntificacion=""
+vdireccion=""
+vciudad=""
+vmunicipio=""
+vhechos=""
+vpruebas=""
+vpeticiones=""
+vtelefono=""
+vcorreo=""
+#######################################
+#EVENTOS TECLADO
+def guardarDatos():
+    vdemandante=tdemandante.get()
+    vdemandado=tdemandado.get()
+    vjuez=tjuez.get()
+    vnombre=tnombre.get()
+    videntificacion=tidentificacion.get()
+    vdireccion=tdireccion.get()
+    vciudad=tciudad.get()
+    vmunicipio=tmunicipio.get()
+    vhechos=thechos.get()
+    vpruebas=tpruebas.get()
+    vpeticiones=tpeticiones.get()
+    vtelefono=ttelefono.get()
+    vcorreo=tcorreo.get()
+    cad=cadTexto(vdemandante, vdemandado, vjuez, vnombre, videntificacion, vdireccion, vciudad, vmunicipio, vhechos, vpruebas, vpeticiones, vtelefono, vcorreo)
+    return cad
+def generarDoc():
+    cad=guardarDatos()
+    texPantalla.set(cad)
+#######################################
+
+#ETIQUETAS DE TEXTO (L)
+lTitulo=Label(frame, text="Generador de tutelas", font=(20))
+lTitulo.grid(row=0,column=0,padx=5,pady=5,columnspan=2)
+#ETIQUETAS TABLA
+demandante=Label(frame, text="Demandante: ")
+demandado=Label(frame, text="Demandado: ")
+juez=Label(frame, text="Juez: ")
+nombre=Label(frame, text="Nombre Completo: ")
+identificacion=Label(frame, text="Identificacion: ") 
+direccion=Label(frame, text="Direccion: ")
+ciudad=Label(frame, text="Ciudad: ")
+municipio=Label(frame, text="Municipio: ")
+hechos=Label(frame, text="Hechos: ")
+pruebas=Label(frame, text="Pruebas: ")
+peticiones=Label(frame, text="Peticiones: ")
+telefono=Label(frame, text="Telefono: ")
+correo=Label(frame, text="Correo: ")
+#posicion (fila,columna,pegado a:)
+demandante.grid(row=1,column=0,sticky="e",padx=5,pady=5)
+demandado.grid(row=2,column=0,sticky="e",padx=5,pady=5)
+juez.grid(row=3,column=0,sticky="e",padx=5,pady=5)
+nombre.grid(row=4,column=0,sticky="e",padx=5,pady=5)
+identificacion.grid(row=5,column=0,sticky="e",padx=5,pady=5)
+direccion.grid(row=6,column=0,sticky="e",padx=5,pady=5)
+ciudad.grid(row=7,column=0,sticky="e",padx=5,pady=5)
+municipio.grid(row=8,column=0,sticky="e",padx=5,pady=5)
+hechos.grid(row=9,column=0,sticky="e",padx=5,pady=5)
+pruebas.grid(row=10,column=0,sticky="e",padx=5,pady=5)
+peticiones.grid(row=11,column=0,sticky="e",padx=5,pady=5)
+telefono.grid(row=12,column=0,sticky="e",padx=5,pady=5)
+correo.grid(row=13,column=0,sticky="e",padx=5,pady=5)
+
+#######################################
+
+#CUADROS DE TEXTO (T)
+#TABLA
+tdemandante=Entry(frame,width=40)
+tdemandado=Entry(frame,width=40)
+tjuez=Entry(frame,width=40)
+tnombre=Entry(frame,width=40)
+tidentificacion=Entry(frame,width=40)
+tdireccion=Entry(frame,width=40)
+tciudad=Entry(frame,width=40)
+tmunicipio=Entry(frame,width=40)
+thechos=Entry(frame,width=40)
+tpruebas=Entry(frame,width=40)
+tpeticiones=Entry(frame,width=40)
+ttelefono=Entry(frame,width=40)
+tcorreo=Entry(frame,width=40)
+#posicion (fila,columna)
+tdemandante.grid(row=1,column=1,padx=5,pady=5)
+tdemandado.grid(row=2,column=1,padx=5,pady=5)
+tjuez.grid(row=3,column=1,padx=5,pady=5)
+tnombre.grid(row=4,column=1,padx=5,pady=5)
+tidentificacion.grid(row=5,column=1,padx=5,pady=5)
+tdireccion.grid(row=6,column=1,padx=5,pady=5)
+tciudad.grid(row=7,column=1,padx=5,pady=5)
+tmunicipio.grid(row=8,column=1,padx=5,pady=5)
+thechos.grid(row=9,column=1,padx=5,pady=5)
+tpruebas.grid(row=10,column=1,padx=5,pady=5)
+tpeticiones.grid(row=11,column=1,padx=5,pady=5)
+ttelefono.grid(row=12,column=1,padx=5,pady=5)
+tcorreo.grid(row=13,column=1,padx=5,pady=5)
+
+#######################################
+#SCROLLBAR (SC)
+#scVarA1=Scrollbar(frame,command=tdemandado.yview)
+#scVarA1.grid(row=2,column=2,sticky="nsw")
+#######################################
+#funciones generador de texto
+def tipoTutela(num):
+    if num ==1:#salud
+        cadtt="Estimo violado el derecho a la salud y a la vida estipulados en la constitucion politica."
+    if num ==2:#familia
+        cadtt="Estimo violado el derecho al bienestar familiar y a vivir en un entorno familiar y a recibir un trato adecuado en el."
+    if num ==3:#educacion
+        cadtt="Estimo violado el derecho a la educación y al pleno desarrollo de la conciencia humana"
+    if num ==4:#vivienda
+        cadtt="Estimo violado el derecho a una vivienda digna con las garantias de proteccion que me ampara el estado"
+    if num ==5:#
+        cadtt=""
+    if num ==6:#
+        cadtt=""
+def tipoDemandado(num):
+    if num ==1:#particular
+        cadtd="particular"
+    if num ==2:#particular
+        cadtd="institucion publica"   
+def peticion(str):
+    cadtp="Con fundamento en los hechos narrados y en las consideraciones expuestas, respetuosamente solicito al señor Juez TUTELAR a mi favor los derechos constitucionales fundamentales invocados ORDENÁNDOLE a la autoridad accionada que "+str
+ 
+def rutaPDD(tt,th,td,tp):
+   for ruta in range(itera+1):
+      conteo = ruta
+      nueva = 1
+      #Ciclo pdd
+      for j in [m for m in listaDatos if m <= ruta]:
+            if minTex[ruta-j] + 1 < conteo:
+               conteo = minTex[ruta-j]+1
+               nueva = j
+      minTex[ruta] = conteo
+      rutaUsada[ruta] = nueva
+   return minTex[itera]
+
+# cadTexto(vdemandante=a, vdemandado=b, vjuez=c, vnombre=d, videntificacion=e, vdireccion=f, vciudad=g, vmunicipio=h, vhechos=i, vpruebas=j, vpeticiones=k, vtelefono=l, vcorreo=m)
+def cadTexto(a,b,c,d,e,f,g,h,i,j,k,l,m):
+    cadTex="Señor\nJuez:"+c+ "\nCiudad: "+g+"\nREFERENCIA: SOLICITUD DE ACCION DE TUTELA\nACCIONANTE: "+a+"\nACCIONADO: "+b+"\nYo,  "+d+", mayor de edad, vecino de esta ciudad, identificado \ncon la cédula de ciudadanía cuyo número y lugar de expedición aparece al pie de \nmi correspondiente firma, residente en "+g+" municipio de "+h+", \nactuando en nombre propio, acudo respetuosamente ante su Despacho \npara promover ACCION DE TUTELA, de conformidad con el artículo 86 de la \nConstitución Política y los Decretos Reglamentarios 2591 de 1.991 y 1382 de 2.000, \npara que judicialmente se me conceda la protección de los derechos constitucionales \nfundamentales que considero vulnerados y/o amenazados por las acciones y/o omisiones del particular, \nque mencioné en la referencia de este escrito. Fundamento mi petición en los siguientes:\nHECHOS:\n"+i+"\nPETICION\n"+k+"\nMEDIOS DE PRUEBA\n"+j+"\nJURAMENTO\nBajo la gravedad del juramento manifiesto que por los mismos hechos y derechos, \nno he presentado petición similar ante ninguna autoridad judicial.\nNOTIFICACIONES\nLas mías las recibiré en"+f+"\nTeléfono: "+l+"\nRuégole, señor Juez, ordenar el trámite de ley para esta petición. Del señor Juez\nFirma _______________________\nNOMBRE "+d+"\nC.C."+e+" DE "+g+"\nDIRECCIÓN: "+f+"\nCORREO ELECTRÓNICO: "+m+"\nTELÉFONOS DE CONTACTO:"+l
+    return cadTex
+    
+#######################################
+
+#BOTONES (B)
+bEnviar=Button(frame,text="Generar",command=lambda:generarDoc())
+bEnviar.grid(row=14,column=1,padx=5,pady=5)
+
+#######################################
+raiz.mainloop()
